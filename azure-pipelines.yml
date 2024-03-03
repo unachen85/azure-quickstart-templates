@@ -5,7 +5,6 @@
 
 variables:
   ARM_PASS: $(adminPass)
-  Target_Path: $(Build.ArtifactStagingDirectory)
 
 trigger:
 - none
@@ -22,7 +21,7 @@ stages:
       inputs:
         SourceFolder: 'quickstarts/microsoft.web/webapp-linux-managed-mysql/'
         Contents: '**'
-        TargetFolder: '$(Target_Path)'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 - stage: Deployement
   jobs: 
@@ -37,8 +36,8 @@ stages:
         resourceGroupName: 'ARMPipelinesLAMP-rg'
         location: 'Japan East'
         templateLocation: 'Linked artifact'
-        csmFile: '$(Target_Path)/azuredeploy.json'
-        csmParametersFile: '$(Target_Path)/azuredeploy.parameters.json'
+        csmFile: '$(Build.ArtifactStagingDirectory)/azuredeploy.json'
+        csmParametersFile: '$(Build.ArtifactStagingDirectory)/azuredeploy.parameters.json'
         overrideParameters: '-siteName $(siteName) -administratorLogin $(adminUser) -administratorLoginPassword $(ARM_PASS)'
         deploymentMode: 'Incremental'
 
