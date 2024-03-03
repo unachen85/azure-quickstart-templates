@@ -47,7 +47,7 @@ stages:
   dependsOn:
   - Deployement
   jobs: 
-  - job: Deployement
+  - job: DeleteResource
     steps:
     - task: AzureResourceManagerTemplateDeployment@3
       inputs:
