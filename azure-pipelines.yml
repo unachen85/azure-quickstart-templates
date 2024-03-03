@@ -32,3 +32,12 @@ steps:
     csmParametersFile: '$(Build.ArtifactStagingDirectory)/azuredeploy.parameters.json'
     overrideParameters: '-siteName $(siteName) -administratorLogin $(adminUser) -administratorLoginPassword $(ARM_PASS)'
     deploymentMode: 'Incremental'
+
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'Azure Internal Sub'
+    subscriptionId: '9e6911a6-e33a-428c-9337-a0b3d70f17b2'
+    action: 'DeleteRG'
+    resourceGroupName: 'ARMPipelinesLAMP-rg'
+    location: 'Japan East'
