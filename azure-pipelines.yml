@@ -22,7 +22,7 @@ steps:
   - task: AzureResourceManagerTemplateDeployment@3
     inputs:
       deploymentScope: 'Resource Group'
-      azureResourceManagerConnection: 'Azure Internal Sub'
+      azureResourceManagerConnection: 'Azure Internal Sub - Workflow identity federation'
       subscriptionId: '9e6911a6-e33a-428c-9337-a0b3d70f17b2'
       action: 'Create Or Update Resource Group'
       resourceGroupName: 'ARMPipelinesLAMP-rg'
@@ -36,7 +36,7 @@ steps:
   - task: AzureResourceManagerTemplateDeployment@3
     inputs:
       deploymentScope: 'Resource Group'
-      azureResourceManagerConnection: 'Azure Internal Sub'
+      azureResourceManagerConnection: 'Azure Internal Sub - Workflow identity federation'
       subscriptionId: '9e6911a6-e33a-428c-9337-a0b3d70f17b2'
       action: 'DeleteRG'
       resourceGroupName: 'ARMPipelinesLAMP-rg'
